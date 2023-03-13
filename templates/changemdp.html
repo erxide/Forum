@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChangePassword</title>
+</head>
+<body>
+  change ton password ici mon grand !
+  <h1>Change Password</h1>
+  <form action="/changemotdepasse" method="POST">
+    <label for="AncienMdp">Anciens mot de passe :</label>
+    <input type="password" id="AncienMdp" name="AncienMdp" required><br><br>
+    <label for="NouveauMdp">Nouveau mot de passe :</label>
+    <input type="password" id="NouveauMdp" name="NouveauMdp" required minlength="6"><br><br>
+    <label for="NouveauMdpCheck">Nouveau mot de passe check :</label>
+    <input type="password" id="NouveauMdpCheck" name="NouveauMdpCheck" required minlength="6"><br><br>
+    <input type="submit" value="Change Password">
+    <p> {{ .Message }}</p>
+    <a href="/acceuil" >retour</a>
+  </form>
+</body>
+</html>

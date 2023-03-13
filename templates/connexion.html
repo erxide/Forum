@@ -1,0 +1,32 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="./assets/css/enregistrement.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="./assets/css/register.css">
+</head>
+<body>
+
+<form action="/connexion" method="post">
+
+    <h1>Inscrivez vous</h1>
+
+    <fieldset>
+        <label for="pseudo">Identifiant:</label>
+        <input type="text" id="pseudo" name="pseudo" required>
+
+        <label for="mdp">Mot de passe:</label>
+        <input type="password" id="mdp" name="mdp" required>
+
+        <p>{{ .Message }}</p>
+
+    </fieldset>
+    <button type="submit">Sign Up</button>
+    <a href="/enregistrement" >S'enregistrer ?</a>
+    <a href="/acceuil" >retour</a>
+
+</form>
+
+</body>
+</html>

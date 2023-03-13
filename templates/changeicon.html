@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChangeIcon</title>
+</head>
+<body>
+  <h1>Change ta couleur d'icon</h1>
+  <form action="/changeicon" method="POST">
+    <label for="icon">Choisir une nouvelle couleur d'icon :</label>
+    <select id="icon" name="icon">
+      <option value="violet">violet</option>
+      <option value="bleu">bleu</option>
+      <option value="vert">vert</option>
+      <option value="jaune">jaune</option>
+      <option value="orange">orange</option>
+      <option value="rouge">rouge</option>
+    </select><br><br>
+    <input type="submit" value="change icon">
+    <p> {{ .ProcessMessage }}</p>
+    <a href="/acceuil" >retour</a>
+  </form>
+</body>
+</html>
