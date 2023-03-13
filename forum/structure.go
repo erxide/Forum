@@ -13,3 +13,19 @@ type Utilisateurs struct {
 	Age    int
 	Icon   string
 }
+
+type Poste struct {
+	ID          int
+	Theme       string
+	Titre       string
+	Description string
+	Creele      string
+	CreePar     string
+	Likes       int
+	Dislikes    int
+}
+
+type Envoie struct {
+	User Utilisateurs
+	Post []Poste
+}

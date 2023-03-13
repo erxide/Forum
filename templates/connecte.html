@@ -27,6 +27,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <a href="/changemotdepasse" class="profil2">Changer mot de passe <ion-icon name="log-out-outline"></ion-icon></a>
+                    <a href="/creationposte" class="profil2">créé ton poste<ion-icon name="log-out-outline"></ion-icon></a>
                     <a href="/changeicon" class="profil2">Changer couleur icon <ion-icon name="log-out-outline"></ion-icon></a>
                     <a href="/deconnexion" class="profil2">Se déconnecter <ion-icon name="log-out-outline"></ion-icon></a>
                 </div>
@@ -68,43 +69,49 @@
     <div class="categorie2">
         <div class="tableau">
             <p class="infos">Thématiques:</p>
-            <a class="rugby">Rugby <ion-icon class="ballon" name="american-football-outline"></ion-icon></a>
-            <a class="tennis">Tennis <ion-icon class="ballon1" name="tennisball-outline"></ion-icon></a>
-            <a class="basket">Basket <ion-icon class="ballon2" name="basketball-outline"></ion-icon></a>
-            <a class="football">football <ion-icon class="ballon3" name="football-outline"></ion-icon></a>
-            <a class="formule1">Formule1 <ion-icon class="ballon4" name="car-sport-outline"></ion-icon></a>
-            <a class="handball">Handball <ion-icon class="ballon5" name="football-outline"></ion-icon></a>
+            <a class="rugby" href="/connecterugby">Rugby <ion-icon class="ballon" name="american-football-outline"></ion-icon></a>
+            <a class="tennis" href="/connectetennis">Tennis <ion-icon class="ballon1" name="tennisball-outline"></ion-icon></a>
+            <a class="basket" href="/connectebasket">Basket <ion-icon class="ballon2" name="basketball-outline"></ion-icon></a>
+            <a class="football" href="/connectefootball">football <ion-icon class="ballon3" name="football-outline"></ion-icon></a>
+            <a class="formule1" href="/connecteformule1">Formule1 <ion-icon class="ballon4" name="car-sport-outline"></ion-icon></a>
+            <a class="handball" href="/connectehandball">Handball <ion-icon class="ballon5" name="football-outline"></ion-icon></a>
+            <a href="/">TOUT</a>
         </div>
         <div class="creation">
-            <img src="./assets/img/{{ .Icon }}.png" alt="icon" style="width: 45%; height: auto;" />
+            <img src="./assets/img/{{ .User.Icon }}.png" alt="icon" style="width: 45%; height: auto;" />
             <br>
-            <p>Bienvenu {{ .Prenom }} {{ .Nom }}</p>
-            <p>Username : {{ .Pseudo }}</p>
-            <p>Mail : {{ .Mail }}</p>
-            <p>Age : {{ .Age }}ans</p>
+            <p>Bienvenu {{ .User.Prenom }} {{ .User.Nom }}</p>
+            <p>Username : {{ .User.Pseudo }}</p>
+            <p>Mail : {{ .User.Mail }}</p>
+            <p>Age : {{ .User.Age }}ans</p>
         </div>
     </div>
 </section>
-<section class="actualite">
-    <div class="actualite1">
-        <div class="acutalite2" style="width: 50%; height: 100%;">
-            <h1 class="titre">Alcaraz prend sa retraite après autant d'annèe au meilleur niveau
-                <img class="image" src="ef5185719fef63246ad0334722b208d1.jpg" alt="">
-            </h1>
-        </div>
-        <div class="acutalite3" style="width: 50%; height: 100%">
-            <ion-icon class="like" name="thumbs-up-outline"></ion-icon>
-            <ion-icon class="dislike" name="thumbs-down-outline"></ion-icon>
-            <form method="post" action="ton_script_recup_data_form.php">
-                <p>Pseudo : <input type="text" name="pseudo" value="" /></p>
-                <p>
-                    Votre commentaire :<br />
-                    <textarea name="commentaire" rows="20" cols="40"></textarea>
-                </p>
-            </form>
-        </div>
+<div id="posts-list" class="actualite" style="
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+">
+    {{ range .Post }}
+    <div id="Post">
+        <h2>{{ .Titre }}</h2>
+        <p>Créé par : {{ .CreePar }}</p>
+        <p>Thème : {{ .Theme }}</p>
+        <p>Contenu : {{ .Description }}</p>
+        <p>Likes : {{ .Likes }}</p>
+        <p>Dislikes : {{ .Dislikes }}</p>
+        <p>Date : {{ .Creele }}</p>
+        <form method="post" action="/like" >
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">Like</button>
+        </form>
+        <form method="post" action="/dislike" >
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">Disike</button>
+        </form>
     </div>
-</section>
+    {{ end }}
+
+</div>
 <section class="filtre">
     <div class="filtre1">
         <div class="filtre2">

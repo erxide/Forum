@@ -2,7 +2,6 @@ package forum
 
 import (
 	"database/sql"
-	"fmt"
 )
 
 func Check(pseudo string, mdp string) (bool, error) {
@@ -13,11 +12,8 @@ func Check(pseudo string, mdp string) (bool, error) {
 	if err != nil {
 		if err == sql.ErrNoRows {
 			// L'utilisateur n'existe pas dans la base de données
-			fmt.Println("user donsn't exist")
 			return false, nil
 		}
-		// Erreur lors de l'exécution de la requête SQL
-		fmt.Println("erreur de requête")
 		return false, err
 	}
 

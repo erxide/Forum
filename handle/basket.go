@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func Connecte(w http.ResponseWriter, r *http.Request) {
+func ConnecteBasket(w http.ResponseWriter, r *http.Request) {
 	page := template.Must(template.ParseFiles("./templates/connecte.html"))
 	session, err := forum.Store.Get(r, "forum")
 	if err != nil {
@@ -33,7 +33,7 @@ func Connecte(w http.ResponseWriter, r *http.Request) {
 		Icon:   icon,
 	}
 	// Récupérer les données des posts dans la base de données
-	rows, err := forum.Bd.Query("SELECT id, theme, titre, description, cree_le, cree_par, likes, dislikes FROM Postes ORDER BY id DESC;")
+	rows, err := forum.Bd.Query("SELECT id, theme, titre, description, cree_le, cree_par, likes, dislikes FROM Postes WHERE theme = 'basket' ORDER BY id DESC;")
 
 	if err != nil {
 		http.Error(w, "Erreur lors de la récupération des posts", http.StatusInternalServerError)

@@ -36,10 +36,12 @@ func Connexion(w http.ResponseWriter, r *http.Request) {
 			}
 			page.Execute(w, Message)
 		}
+	} else {
+		message := "entrez identifiant"
+		Message := forum.ErreurMessage{
+			Message: message,
+		}
+		page.Execute(w, Message)
+
 	}
-	message := "entrez identifiant"
-	Message := forum.ErreurMessage{
-		Message: message,
-	}
-	page.Execute(w, Message)
 }

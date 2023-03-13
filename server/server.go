@@ -20,6 +20,15 @@ func main() {
 	http.HandleFunc("/deconnexion", handleDeconnexion)
 	http.HandleFunc("/changeicon", handleChangeIcon)
 	http.HandleFunc("/changemotdepasse", handleChangeMdp)
+	http.HandleFunc("/creationposte", handleCreationPoste)
+	http.HandleFunc("/connecterugby", handleConnecteRugby)
+	http.HandleFunc("/connectetennis", handleConnecteTennis)
+	http.HandleFunc("/connectebasket", handleConnecteBasket)
+	http.HandleFunc("/connectefootball", handleConnectefootball)
+	http.HandleFunc("/connecteformule1", handleConnecteformule1)
+	http.HandleFunc("/connectehandball", handleConnecteHandball)
+	http.HandleFunc("/like", handleLike)
+	http.HandleFunc("/dislike", handleDislike)
 	// Écris dans le terminal, si le serveur a démarré, l'url du serveur avec le port
 	log.Println("Serveur démarré sur http://localhost:8080")
 	// Démarre le serveur sur le port 8080
@@ -57,24 +66,78 @@ func handleConnexion(w http.ResponseWriter, r *http.Request) {
 
 // Fonction handleConnecte pour la route /connexion
 func handleConnecte(w http.ResponseWriter, r *http.Request) {
-	// appel de la fonction Connexion dans le dossier forum
+	// appel de la fonction Connecte dans le dossier forum
 	handle.Connecte(w, r)
 }
 
 // Fonction handleDeconnexion pour la route /connexion
 func handleDeconnexion(w http.ResponseWriter, r *http.Request) {
-	// appel de la fonction Connexion dans le dossier forum
+	// appel de la fonction deconnexion dans le dossier forum
 	handle.Deconnexion(w, r)
 }
 
 // Fonction handleChangeIcon pour la route /connexion
 func handleChangeIcon(w http.ResponseWriter, r *http.Request) {
-	// appel de la fonction Connexion dans le dossier forum
+	// appel de la fonction changeicon dans le dossier forum
 	handle.ChangeIcon(w, r)
 }
 
 // Fonction handleChangeMdp pour la route /connexion
 func handleChangeMdp(w http.ResponseWriter, r *http.Request) {
-	// appel de la fonction Connexion dans le dossier forum
+	// appel de la fonction changemdp dans le dossier forum
 	handle.ChangeMdp(w, r)
+}
+
+// Fonction handleCreationPoste pour la route /creationposte
+func handleCreationPoste(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.CreationPost(w, r)
+}
+
+// Fonction handleConnecteRugby pour la route /connecterugby
+func handleConnecteRugby(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.ConnecteRugby(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleConnecteTennis(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.ConnecteTennis(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleConnecteBasket(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.ConnecteBasket(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleConnectefootball(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.Connectefootball(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleConnecteformule1(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.Connecteformule1(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleConnecteHandball(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.ConnecteHandball(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleLike(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.Like(w, r)
+}
+
+// Fonction handleConnecteTennis pour la route /connecterugby
+func handleDislike(w http.ResponseWriter, r *http.Request) {
+	// appel de la fonction creationposte dans le dossier forum
+	handle.Dislike(w, r)
 }

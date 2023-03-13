@@ -21,7 +21,50 @@ func OuvrirBaseDonnee(chemin string) (*sql.DB, error) {
 		log.Fatal(err)
 	}
 	fmt.Println("connexion a la base de donnée réussite")
-	return bd, nil
+	_, err = bd.Exec("SELECT * FROM Utilisateurs")
+	if err != nil {
+		// Si la table n'existe pas, la créer
+		_, err := bd.Exec(`CREATE TABLE Utilisateurs (
+    id INTEGER PRIMARY KEY,
+    pseudo TEXT NOT NULL,
+    mdp TEXT NOT NULL,
+    prenom TEXT NOT NULL,
+    nom TEXT NOT NULL,
+    mail TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    icon TEXT
+);`)
+		if err != nil {
+			fmt.Println(err)
+			return bd, err
+		}
+		fmt.Println("Table Utilisateurs créée avec succès.")
+	} else {
+		fmt.Println("La table Utilisateurs existe déjà.")
+	}
+	_, err = bd.Exec("SELECT * FROM Postes")
+	if err != nil {
+		// Si la table n'existe pas, la créer
+		_, err := bd.Exec(`CREATE TABLE Postes (
+  id INTEGER PRIMARY KEY,
+  theme TEXT NOT NULL,
+  titre TEXT NOT NULL,
+  description TEXT NOT NULL,
+  cree_le TEXT NOT NULL,
+  cree_par TEXT NOT NULL,
+  likes INT DEFAULT 0,
+  dislikes INT DEFAULT 0
+  )`)
+		if err != nil {
+			fmt.Println(err)
+			return bd, err
+		}
+		fmt.Println("Table Postes créée avec succès.")
+	} else {
+		fmt.Println("La table Postes existe déjà.")
+	}
+
+	return bd, err
 }
 
 // ObtenirInfoUtilisateur est une fonction pour avoir les informations de l'utilisateur demandé
