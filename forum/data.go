@@ -3,9 +3,10 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	"log"
+
 	"github.com/gorilla/sessions"
 	_ "github.com/mattn/go-sqlite3"
-	"log"
 )
 
 // Var pour définir la base de donée
@@ -62,6 +63,23 @@ func OuvrirBaseDonnee(chemin string) (*sql.DB, error) {
 		fmt.Println("Table Postes créée avec succès.")
 	} else {
 		fmt.Println("La table Postes existe déjà.")
+	}
+	_, err = bd.Exec("SELECT * FROM Commantaires")
+	if err != nil {
+		// Si la table n'existe pas, la créer
+		_, err := bd.Exec(`CREATE TABLE  Commentaires (
+  id INTEGER PRIMARY KEY,
+  idPost INT NOT NULL,
+  idPseudo INT NOT NULL,
+  contenu TEXT NOT NULL
+  )`)
+		if err != nil {
+			fmt.Println(err)
+			return bd, err
+		}
+		fmt.Println("Table Commantaires créée avec succès.")
+	} else {
+		fmt.Println("La table Commantaires existe déjà.")
 	}
 
 	return bd, err
