@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/connecte.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Accueil</title>
+</head>
+<body>
+<section class="Index1">
+    <div class="test">
+        <a href="#" class="test1">
+            <span>F</span>orum <span>S</span>port</a>
+        <!--<p class="test1">
+            Forum Sport
+        </p>-->
+        <!--<p class="test2">
+            recherche
+        </p>*/-->
+        <div class="utilisateur">
+            <button id="myBtn"><ion-icon class="utilisateur1" name="person-outline"></ion-icon></button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <a href="/changemotdepasse" class="profil2">Changer mot de passe <ion-icon name="log-out-outline"></ion-icon></a>
+                    <a href="/mespostes" class="profil2">mes postes<ion-icon name="log-out-outline"></ion-icon></a>
+                    <a href="/creationposte" class="profil2">créé ton poste<ion-icon name="log-out-outline"></ion-icon></a>
+                    <a href="/changeicon" class="profil2">Changer couleur icon <ion-icon name="log-out-outline"></ion-icon></a>
+                    <a href="/deconnexion" class="profil2">Se déconnecter <ion-icon name="log-out-outline"></ion-icon></a>
+                </div>
+
+            </div>
+
+            <script>
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("myBtn");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks the button, open the modal
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+        </div>
+
+    </div>
+</section>
+<section class="categorie">
+    <div class="categorie2">
+        <div class="tableau">
+            <p class="infos">Thématiques:</p>
+            <a class="rugby" href="/rugby">Rugby <ion-icon class="ballon" name="american-football-outline"></ion-icon></a>
+            <a class="tennis" href="/tennis">Tennis <ion-icon class="ballon1" name="tennisball-outline"></ion-icon></a>
+            <a class="basket" href="/basket">Basket <ion-icon class="ballon2" name="basketball-outline"></ion-icon></a>
+            <a class="football" href="/football">football <ion-icon class="ballon3" name="football-outline"></ion-icon></a>
+            <a class="formule1" href="/formule1">Formule1 <ion-icon class="ballon4" name="car-sport-outline"></ion-icon></a>
+            <a class="handball" href="/handball">Handball <ion-icon class="ballon5" name="football-outline"></ion-icon></a>
+            <a href="/">TOUT</a>
+        </div>
+        <div class="creation">
+            <img src="./assets/img/{{ .User.Icon }}.png" alt="icon" style="width: 45%; height: auto;" />
+            <br>
+            <p>Bienvenu {{ .User.Prenom }} {{ .User.Nom }}</p>
+            <p>Username : {{ .User.Pseudo }}</p>
+            <p>Mail : {{ .User.Mail }}</p>
+            <p>Age : {{ .User.Age }}ans</p>
+        </div>
+    </div>
+</section>
+<div id="posts-list" class="actualite" style="
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+">
+    {{ range .Post }}
+    <div id="Post">
+        <h2>{{ .Titre }}</h2>
+        <img src="./assets/img/{{ .Icon }}.png" alt="icon" style="width: 3%; height: auto;" />
+        <p>Créé par : {{ .CreePar }}</p>
+        <p>Thème : {{ .Theme }}</p>
+        <p>Contenu : {{ .Description }}</p>
+        <p>Likes : {{ .Likes }}</p>
+        <p>Dislikes : {{ .Dislikes }}</p>
+        <p>Date : {{ .Creele }}</p>
+        <form method="post" action="/like" >
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">Like</button>
+        </form>
+        <form method="post" action="/dislike" >
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">Disike</button>
+        </form>
+        <form method="post" action="/commentaire" >
+            <label for="contenu"></label>
+            <input type="text" id="contenu" name="contenu" required minlength="3" maxlength="300">
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">ajouter un commentaire</button>
+        </form>
+    </div>
+    {{ range .Coms }}
+    <div id="Commentaire">
+        <p>{{ .Contenu }}</p>
+    </div>
+    {{ end }}
+    {{ end }}
+
+</div>
+<section class="filtre">
+    <div class="filtre1">
+        <div class="filtre2">
+            <div class="filtre4">
+                <div class="range-wrap">
+                    <p> Nombre de likes</p>
+                    <div class="range-value" id="rangeV"></div>
+                    <input id="rangeV" type="range" min="0" max="100" value="200" step="1">
+                </div>
+                <script>
+                    range = document.getElementById('range'),
+                        rangeV = document.getElementById('rangeV'),
+                        setValue = ()=>{
+                            const
+                                newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
+                                newPosition = 10 - (newValue * 0.2);
+                            rangeV.innerHTML = `<span>${range.value}</span>`;
+                            rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+                        };
+                    document.addEventListener("DOMContentLoaded", setValue);
+                    range.addEventListener('input', setValue);
+                </script>
+
+                <div class="filtre5">
+                    <div class="range-wrap">
+                        <p> commentaires</p>
+                        <div class="range-value" id="rangeV"></div>
+                        <input id="rangeV" type="range" min="0" max="50" value="200" step="1">
+                    </div>
+                    <script>
+                        range = document.getElementById('range'),
+                            rangeV = document.getElementById('rangeV'),
+                            setValue = ()=>{
+                                const
+                                    newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
+                                    newPosition = 10 - (newValue * 0.2);
+                                rangeV.innerHTML = `<span>${range.value}</span>`;
+                                rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+                            };
+                        document.addEventListener("DOMContentLoaded", setValue);
+                        range.addEventListener('input', setValue);
+                    </script>
+                    <p class="filtre3">Contrat D’Utilisation De Sport Forum
+                        Politique De Confidentialité
+                        Politique De Contenu
+                        Code De Conduite Des Mods
+                        Sport Forum Inc © 2023. Tous droits réservés.</p>
+                </div>
+            </div>
+
+</section>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
