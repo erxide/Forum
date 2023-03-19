@@ -1,0 +1,339 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0%;
+    width: 100%;
+    height: 100vh;
+}
+
+.navigation{
+    float: left;
+    width: 15%; 
+    height: 100%;
+}
+
+.navigation1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    background-color: #232323; 
+}
+
+.navigation2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    background-color: #232323;
+}
+
+.navigation2 {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.navigation2 span{
+    color: #006cbd;
+}
+
+.navigation3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    background-color: #232323;
+}
+
+.navigation4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 100%;
+    background-color: #232323;
+}
+
+.navigation5 {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: left;
+}
+
+.navigation6 {
+    display: flex;
+    flex-direction: row;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: -20%;
+    margin-top: 10%;
+    background-color: #232323;
+    color: rgb(255, 255, 255);
+    font-size: 150%;
+    margin-right: 40%;
+}
+.rugby {
+    display: flex;
+    margin-top: 30%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 80%;
+    transition: 0.7s;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.ballon {
+    margin-left: 10%;
+}
+
+.rugby:hover {
+    background-color:  rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.tennis {
+    display: flex;
+    margin-top: 0%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 0px;
+    font-size: 80%;
+    transition: 0.7s;
+    text-decoration: none;
+    color: white;
+    font-size: 150%;
+}
+
+.ballon1 {
+    margin-left: 10%;
+}
+
+.tennis:hover {
+    background-color: rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.basket {
+    display: flex;
+    margin-top: 0%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 0px;
+    font-size: 80%;
+    transition: 0.7s;
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.ballon2 {
+    margin-left: 10%;
+}
+
+.basket:hover {
+    background-color: rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.football {
+    display: flex;
+    margin-bottom: 0%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 0px;
+    font-size: 80%;
+    transition: 0.7s;
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.ballon3 {
+    margin-left: 10%;
+}
+
+.football:hover {
+    background-color: rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.formule1 {
+    display: flex;
+    margin-bottom: 0%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 0px;
+    font-size: 80%;
+    transition: 0.7s;
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.ballon4 {
+    margin-left: 6%;
+}
+
+.formule1:hover {
+    background-color: rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.handball {
+    display: flex;
+    margin-bottom: 0%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 0px;
+    font-size: 80%;
+    transition: 0.7s;
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.ballon5{
+    margin-left: 6%;
+}
+
+.handball:hover {
+    background-color: rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.tout{
+    display: flex;
+    margin-bottom: 0%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-left: -12%;
+    padding: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 0px;
+    font-size: 80%;
+    transition: 0.7s;
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+.tout:hover{
+    background-color: rgb(211, 211, 211, 0.5);
+    text-decoration: underline;
+}
+
+.actualite {
+    float: right;
+    width: 85%; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+
+.poste {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    width: 65%;
+    background-color: #232323;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.poste1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: left;
+    color: white;
+    margin-top: 1.5%;
+}
+
+.placement {
+    margin-left: 2.5%;
+}
+
+.placement1 {
+    margin-right: 4%;
+}
+
+.poste2 {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+    color: white;
+    margin-left: 2.5%;
+}
+
+.placement3 {
+    margin-left: 2%;
+}
+
+.poste3 {
+    color: white;
+    margin-left: 2.5%;
+}
+
+.poste4 {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+    color: white;
+    margin-left: 2.5%;
+}
+
+

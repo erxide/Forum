@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/inscription.css">
+    <title>S'inscrire</title>
+</head>
+<body>
+    <!--Tout ce qui concerne toute la partie inscription-->
+    <section class="actualite">
+        <div class="actualite1"style="
+        overflow: scroll;
+    ">
+            <form action="/enregistrement" method="post" style="    margin-top: 200px;
+            ">
+
+                <h1 class="actualite2">
+                    <span>S</span>'enregistrer
+                </h1>
+            
+                <fieldset>
+                    <label for="pseudo">Identifiant:</label>
+                    <input type="text" id="pseudo" name="pseudo" required minlength="3" maxlength="20">
+            
+                    <label for="mail">Email:</label>
+                    <input type="email" id="mail" name="mail" required>
+            
+                    <label for="mdp">Mot de passe:</label>
+                    <input type="password" id="mdp" name="mdp" required minlength="6">
+            
+                    <label for="testmdp">Mot de passe check:</label>
+                    <input type="password" id="testmdp" name="testmdp" required minlength="6">
+                
+                    <label for="prenom">Prenom :</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" required>
+                
+                    <label for="age">Age :</label>
+                    <input type="number" id="age" name="age" required value="1" min="13" max="100">
+            
+                    <label for="icon">Choisir une couleur d'icon :</label>
+                    <select id="icon" name="icon">
+                        <option value="violet">violet</option>
+                        <option value="bleu">bleu</option>
+                        <option value="vert">vert</option>
+                        <option value="jaune">jaune</option>
+                        <option value="orange">orange</option>
+                        <option value="rouge">rouge</option>
+                    </select>
+               
+                    <p class="couleur">{{ .Message }}</p>
+                
+                </fieldset>
+                <button type="submit">S'inscrire</button>
+                
+            
+            </form>
+        </div>
+    </section>
+    <!--Concerne la partie navigation à gauche-->
+    <section class="navigation">
+        <div class="navigation1">
+            <a href="#" class="navigation2">
+                <span>F</span>orum <span>S</span>port
+            </a>
+
+            <div class="navigation3">
+                <p class="infos">Thématiques:</p>
+                <a class="rugby" href="/connecterugby">Rugby <ion-icon class="ballon" name="american-football-outline"></ion-icon></a>
+                <a class="tennis" href="/connectetennis">Tennis <ion-icon class="ballon1" name="tennisball-outline"></ion-icon></a>
+                <a class="basket" href="/connectebasket">Basket <ion-icon class="ballon2" name="basketball-outline"></ion-icon></a>
+                <a class="football" href="/connectefootball">football <ion-icon class="ballon3" name="football-outline"></ion-icon></a>
+                <a class="formule1" href="/connecteformule1">Formule1 <ion-icon class="ballon4" name="car-sport-outline"></ion-icon></a>
+                <a class="handball" href="/connectehandball">Handball <ion-icon class="ballon5" name="football-outline"></ion-icon></a>
+                <a  class="tout" href="/">TOUTES</a>
+            </div>
+            <div class="navigation4">
+                <a href="/connexion" class="creation2">Se Connecter</a>
+                <a href="/accueil" class="creation2">Retour</a>
+            </div>
+        </div>
+        
+    </section>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+</body>
+</html>

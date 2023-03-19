@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/accueilco.css">
+    <title>Accueil</title>
+</head>
+<body>
+    <!--Tout ce qui concerne les postes en étant connecté-->
+    <section class="actualite" style="overflow-y: auto;">
+            {{ range .Post}}
+            <div class="poste">
+            
+                <div class="poste1">
+                    <h2 class="placement">{{ .Titre }}</h2>
+                    <p class="placement1">Thème : {{ .Theme }}</p>
+                </div>
+                <div class="poste2">
+                    <img src="./assets/img/{{ .Icon }}.png" alt="icon" style="width: 3%; height: auto;" />
+                        <p class="placement2">{{ .CreePar }}</p>
+                        <p class="placement3">{{ .Creele }}</p>
+                </div>
+                    <p class="poste3">Contenu : {{ .Description }}</p>
+                <div class="poste4">  
+                    <p>{{ .Likes }}</p>  
+                    <form method="post" action="/like" >
+                        <input type="hidden" name="post_id" value="{{ .ID }}">
+                        <button type="submit">Like</button>
+                    </form>
+                    <p>{{ .Dislikes }}</p>
+                    <form method="post" action="/dislike" >
+                        <input type="hidden" name="post_id" value="{{ .ID }}">
+                        <button type="submit">Dislike</button>
+                    </form>
+                </div>
+                {{ range .Coms}}
+                <p class="contenucom" style="color: aliceblue; margin-left: 20px; margin-top: 10px;"><img src="./assets/img/{{ .IconDuPseudo }}.png" alt="icon" style="width: 2%; height: auto;" />{{ .Pseudo }} : {{ .Contenu }}</p>
+                {{ end }}
+                <form method="post" action="/commentaire"  style="margin-top: 20px;margin-left: 20px;">
+                    <label for="contenu"></label>
+                    <input type="text" id="contenu" name="contenu" required minlength="3" maxlength="300">
+                    <input type="hidden" name="post_id" value="{{ .ID }}">
+                    <button type="submit">ajouter un commentaire</button>
+                </form>
+            </div>
+            {{ end }}
+    </section>
+    <!--Tout ce qui concerne la barre de navigation à gauche -->
+    <section class="navigation">
+        <div class="navigation1">
+            <a href="#" class="navigation2">
+                <span>F</span>orum <span>S</span>port</a>
+
+            <div class="navigation3">
+                <p class="infos">Thématiques:</p>
+                <a class="rugby" href="/rugby">Rugby <ion-icon class="ballon" name="american-football-outline"></ion-icon></a>
+                <a class="tennis" href="/tennis">Tennis <ion-icon class="ballon1" name="tennisball-outline"></ion-icon></a>
+                <a class="basket" href="/basket">Basket <ion-icon class="ballon2" name="basketball-outline"></ion-icon></a>
+                <a class="football" href="/football">football <ion-icon class="ballon3" name="football-outline"></ion-icon></a>
+                <a class="formule1" href="/formule1">Formule1 <ion-icon class="ballon4" name="car-sport-outline"></ion-icon></a>
+                <a class="handball" href="/handball">Handball <ion-icon class="ballon5" name="football-outline"></ion-icon></a>
+                <a  class="tout" href="/accueil">TOUTES</a>
+            </div>
+            
+            <div class="navigation4">
+                <div class="navigation5">
+                    <div class="navigation6">
+                        <img src="./assets/img/{{ .User.Icon }}.png" alt="icon" style="width: 10%; height: auto;" />
+                <br>
+                <p>{{ .User.Pseudo }}</p>
+            </div>
+                <a href="/changemotdepasse" class="navigation5">Changer mot de passe </a>
+                <a href="/mespostes" class="navigation5">mes postes</a>
+                <a href="/creationposte" class="navigation5">créé ton poste</a>
+                <a href="/changeicon" class="navigation5">Changer couleur icon </a>
+                <a href="/deconnexion" class="navigation5">Se déconnecter </a>
+                </div>
+            </div>
+            
+         
+        
+        </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+</body>
+</html>
