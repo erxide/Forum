@@ -10,8 +10,6 @@ langage utilisé golang pour le back,
 Html css et javascript pour le front, 
 Base de données SQLITE
 
-Pour accéder au serveur vous pouvez aussi cliquer sur ce lien
-http://forumsport.online/accueil#
 
 Fonctionnalité du site :
 
